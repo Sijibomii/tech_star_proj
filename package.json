@@ -1,0 +1,29 @@
+{
+  "name": "reddit-email-service",
+  "version": "1.0.0",
+  "description": "Hi, welcome to Techstart Challenge",
+  "main": "index.js",
+  "scripts": {
+    "watch": "tsc -w",
+    "dev": "nodemon dist/index.js",
+    "start": "node dist/index.js",
+    "start2": "ts-node src/index.ts",
+    "create:migration": "npx mikro-orm migration:create"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/techstarta/reddit-email-service.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/techstarta/reddit-email-service/issues"
+  },
+  "homepage": "https://github.com/techstarta/reddit-email-service#readme",
+  "devDependencies": {
+    "@types/node": "^16.11.0",
+    "ts-node": "^10.3.0",
+    "typescript": "^4.4.4"
+  }
+}
