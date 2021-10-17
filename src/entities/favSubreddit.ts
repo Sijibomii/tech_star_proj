@@ -1,4 +1,4 @@
-import { ObjectType, Field, Int } from "type-graphql";
+import { ObjectType, Field } from "type-graphql";
 import {
   Entity,
   Column,
@@ -8,35 +8,33 @@ import {
   BaseEntity,
   ManyToOne,
 } from "typeorm";
-import { Sreddit} from "./subreddit";
+import { Sreddit } from "./subreddit";
 import { User } from "./users";
+//name, followers, no of posts, creator, description
 
 @ObjectType()
 @Entity()
-export class Post extends BaseEntity {
+//user can have multiple faves but a fave must be linked to just one user
+export class FavSubReddit extends BaseEntity {
   @Field()
   @PrimaryGeneratedColumn()
   id!: number;
 
   @Field()
   @Column()
-  title!: string;
+  UserId: number;
+
+  @Field()
+  @ManyToOne(() => User, (user) => user.favReddits)
+  user: User;
 
   @Field()
   @Column()
-  text!: string;
+  SubredditId: number;
 
   @Field()
-  @ManyToOne(() => Sreddit , s => s.posts)
-  sub_reddit:  Sreddit;
-
-  @Field()
-  @Column()
-  creatorId: number;
-
-  @Field()
-  @ManyToOne(() => User, (user) => user.posts)
-  creator: User;
+  @ManyToOne(() => Sreddit, (sr) => sr.favSubreddit )
+  favesubreddit: Sreddit;
 
   @Field(() => String)
   @CreateDateColumn()

@@ -7,7 +7,10 @@ import {
   UpdateDateColumn,
   BaseEntity,
   ManyToOne,
+  OneToMany,
 } from "typeorm";
+import { FavSubReddit } from "./favSubreddit";
+import { Post } from "./posts";
 import { User } from "./users";
 //name, followers, no of posts, creator, description
 
@@ -30,16 +33,26 @@ export class Sreddit extends BaseEntity {
   @Column({ type: "int", default: 0 })
   followers_count!: number;
 
-  @Field(() => Int, { nullable: true })
-  post_count: number | null; 
+  
+  @Field(() => Int, { nullable: true})
+  @Column({ type: "int", default:0})
+  post_count!: number | null; 
 
   @Field()
   @Column()
   creatorId: number;
 
   @Field()
-  @ManyToOne(() => User, (user) => user.posts)
+  @ManyToOne(() => User, (user) => user.sreddits)
   creator: User;
+
+  @Field()
+  @OneToMany(() => FavSubReddit, (fv) => fv.favesubreddit)
+  favSubreddit: FavSubReddit[];
+
+  @Field()
+  @OneToMany(() => Post, (p) => p.sub_reddit)
+  posts: Post[];
 
   @Field(() => String)
   @CreateDateColumn()

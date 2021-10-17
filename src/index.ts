@@ -20,12 +20,12 @@ require('dotenv').config()
 //i've not used reddit before, so I'm assuming the newsletter users get is solely based on list of posts from their
 //favourite subreddit for the previous day.
 const main = async () => {
-  console.log(process.env.type)
+  console.log(process.env.username)
   const conn= await createConnection({
     type: 'postgres',
-    database: process.env.database,//new db
-    username: process.env.username,
-    password: process.env.password,
+    database: 'liredit2',//new db
+    username: 'postgres',
+    password: 'emmanuel',
     logging: true,
     synchronize: true,
     migrations: [path.join(__dirname, "./migrations/*")],

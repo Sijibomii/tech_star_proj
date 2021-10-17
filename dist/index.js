@@ -20,12 +20,12 @@ const subreddit_1 = require("./entities/subreddit");
 const path_1 = __importDefault(require("path"));
 require('dotenv').config();
 const main = async () => {
-    console.log(process.env.type);
+    console.log(process.env.username);
     const conn = await (0, typeorm_1.createConnection)({
         type: 'postgres',
-        database: process.env.database,
-        username: process.env.username,
-        password: process.env.password,
+        database: 'liredit2',
+        username: 'postgres',
+        password: 'emmanuel',
         logging: true,
         synchronize: true,
         migrations: [path_1.default.join(__dirname, "./migrations/*")],

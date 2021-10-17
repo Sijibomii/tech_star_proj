@@ -12,6 +12,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Sreddit = void 0;
 const type_graphql_1 = require("type-graphql");
 const typeorm_1 = require("typeorm");
+const favSubreddit_1 = require("./favSubreddit");
+const posts_1 = require("./posts");
 const users_1 = require("./users");
 let Sreddit = class Sreddit extends typeorm_1.BaseEntity {
 };
@@ -37,6 +39,7 @@ __decorate([
 ], Sreddit.prototype, "followers_count", void 0);
 __decorate([
     (0, type_graphql_1.Field)(() => type_graphql_1.Int, { nullable: true }),
+    (0, typeorm_1.Column)({ type: "int", default: 0 }),
     __metadata("design:type", Object)
 ], Sreddit.prototype, "post_count", void 0);
 __decorate([
@@ -46,9 +49,19 @@ __decorate([
 ], Sreddit.prototype, "creatorId", void 0);
 __decorate([
     (0, type_graphql_1.Field)(),
-    (0, typeorm_1.ManyToOne)(() => users_1.User, (user) => user.posts),
+    (0, typeorm_1.ManyToOne)(() => users_1.User, (user) => user.sreddits),
     __metadata("design:type", users_1.User)
 ], Sreddit.prototype, "creator", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.OneToMany)(() => favSubreddit_1.FavSubReddit, (fv) => fv.favesubreddit),
+    __metadata("design:type", Array)
+], Sreddit.prototype, "favSubreddit", void 0);
+__decorate([
+    (0, type_graphql_1.Field)(),
+    (0, typeorm_1.OneToMany)(() => posts_1.Post, (p) => p.sub_reddit),
+    __metadata("design:type", Array)
+], Sreddit.prototype, "posts", void 0);
 __decorate([
     (0, type_graphql_1.Field)(() => String),
     (0, typeorm_1.CreateDateColumn)(),
