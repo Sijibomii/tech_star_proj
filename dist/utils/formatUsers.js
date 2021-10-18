@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.formatUsers = void 0;
-const favSubreddit_1 = require("src/entities/favSubreddit");
-const posts_1 = require("src/entities/posts");
-const subreddit_1 = require("src/entities/subreddit");
+const favSubreddit_1 = require("../entities/favSubreddit");
+const posts_1 = require("../entities/posts");
+const subreddit_1 = require("../entities/subreddit");
 class FormatResponese {
 }
 class Fave {

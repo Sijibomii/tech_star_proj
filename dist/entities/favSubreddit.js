@@ -27,7 +27,6 @@ __decorate([
     __metadata("design:type", Number)
 ], FavSubReddit.prototype, "UserId", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
     (0, typeorm_1.ManyToOne)(() => users_1.User, (user) => user.favReddits),
     __metadata("design:type", users_1.User)
 ], FavSubReddit.prototype, "user", void 0);
@@ -37,7 +36,6 @@ __decorate([
     __metadata("design:type", Number)
 ], FavSubReddit.prototype, "SubredditId", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
     (0, typeorm_1.ManyToOne)(() => subreddit_1.Sreddit, (sr) => sr.favSubreddit),
     __metadata("design:type", subreddit_1.Sreddit)
 ], FavSubReddit.prototype, "favesubreddit", void 0);

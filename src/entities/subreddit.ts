@@ -42,15 +42,15 @@ export class Sreddit extends BaseEntity {
   @Column()
   creatorId: number;
 
-  @Field()
+  // @Field()
   @ManyToOne(() => User, (user) => user.sreddits)
   creator: User;
 
-  @Field()
+  
   @OneToMany(() => FavSubReddit, (fv) => fv.favesubreddit)
   favSubreddit: FavSubReddit[];
 
-  @Field()
+  // @Field()
   @OneToMany(() => Post, (p) => p.sub_reddit)
   posts: Post[];
 

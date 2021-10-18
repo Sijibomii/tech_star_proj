@@ -1,6 +1,6 @@
-import { FavSubReddit } from "src/entities/favSubreddit"
-import { Post } from "src/entities/posts"
-import { Sreddit } from "src/entities/subreddit"
+import { FavSubReddit } from "../entities/favSubreddit"
+import { Post } from "../entities/posts"
+import { Sreddit } from "../entities/subreddit"
 import { User } from "../entities/users"
 
 class FormatResponese{

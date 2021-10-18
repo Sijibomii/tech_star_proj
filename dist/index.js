@@ -36,7 +36,7 @@ const main = async () => {
         logging: true,
         synchronize: true,
         migrations: [path_1.default.join(__dirname, "./migrations/*")],
-        entities: [posts_2.Post, users_2.User, subreddit_1.Sreddit, favSubreddit_1.FavSubReddit]
+        entities: [posts_2.Post, users_2.User, favSubreddit_1.FavSubReddit, subreddit_1.Sreddit]
     });
     await conn.runMigrations();
     console.log('up and running');

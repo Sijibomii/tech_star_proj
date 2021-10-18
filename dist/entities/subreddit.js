@@ -48,17 +48,14 @@ __decorate([
     __metadata("design:type", Number)
 ], Sreddit.prototype, "creatorId", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
     (0, typeorm_1.ManyToOne)(() => users_1.User, (user) => user.sreddits),
     __metadata("design:type", users_1.User)
 ], Sreddit.prototype, "creator", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
     (0, typeorm_1.OneToMany)(() => favSubreddit_1.FavSubReddit, (fv) => fv.favesubreddit),
     __metadata("design:type", Array)
 ], Sreddit.prototype, "favSubreddit", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
     (0, typeorm_1.OneToMany)(() => posts_1.Post, (p) => p.sub_reddit),
     __metadata("design:type", Array)
 ], Sreddit.prototype, "posts", void 0);

@@ -16,8 +16,8 @@ import { getConnection } from "typeorm";
 import { isAuth } from "../middleware/isAuth";
 import { Post } from "../entities/posts";
 import { User } from "../entities/users";
-import { MyContext } from "src/types";
-import { FavSubReddit } from "src/entities/favSubreddit";
+import { MyContext } from "../types";
+import { FavSubReddit } from "../entities/favSubreddit";
 @InputType()
 class PostInput {
   @Field()

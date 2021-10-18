@@ -12,10 +12,10 @@ import { Sreddit } from "./subreddit";
 import { User } from "./users";
 //name, followers, no of posts, creator, description
 
+//user can have multiple faves but a fave must be linked to just one user
 @ObjectType()
 @Entity()
-//user can have multiple faves but a fave must be linked to just one user
-export class FavSubReddit extends BaseEntity {
+export class FavSubReddit extends BaseEntity{
   @Field()
   @PrimaryGeneratedColumn()
   id!: number;
@@ -24,7 +24,7 @@ export class FavSubReddit extends BaseEntity {
   @Column()
   UserId: number;
 
-  @Field()
+  // @Field()
   @ManyToOne(() => User, (user) => user.favReddits)
   user: User;
 
@@ -32,7 +32,7 @@ export class FavSubReddit extends BaseEntity {
   @Column()
   SubredditId: number;
 
-  @Field()
+  // @Field(()=> Sreddit, { nullable: true })
   @ManyToOne(() => Sreddit, (sr) => sr.favSubreddit )
   favesubreddit: Sreddit;
 

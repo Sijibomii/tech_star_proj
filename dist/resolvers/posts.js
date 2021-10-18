@@ -18,7 +18,7 @@ const typeorm_1 = require("typeorm");
 const isAuth_1 = require("../middleware/isAuth");
 const posts_1 = require("../entities/posts");
 const users_1 = require("../entities/users");
-const favSubreddit_1 = require("src/entities/favSubreddit");
+const favSubreddit_1 = require("../entities/favSubreddit");
 let PostInput = class PostInput {
 };
 __decorate([

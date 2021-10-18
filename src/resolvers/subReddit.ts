@@ -12,7 +12,7 @@ import {
 } from "type-graphql";
 import { User } from "../entities/users";
 import { isAuth } from "../middleware/isAuth";
-import { Sreddit } from "src/entities/subreddit";
+import { Sreddit } from "../entities/subreddit";
 import { FavSubReddit } from "../entities/favSubreddit";
 import { formatUsers } from "../utils/formatUsers";
 import { createNewsLetter } from "../utils/createNewsLetter"
