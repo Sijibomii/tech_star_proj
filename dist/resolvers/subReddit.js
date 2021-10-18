@@ -19,6 +19,7 @@ const isAuth_1 = require("../middleware/isAuth");
 const subreddit_1 = require("src/entities/subreddit");
 const favSubreddit_1 = require("../entities/favSubreddit");
 const formatUsers_1 = require("../utils/formatUsers");
+const createNewsLetter_1 = require("../utils/createNewsLetter");
 let SredditInput = class SredditInput {
 };
 __decorate([
@@ -119,7 +120,13 @@ let SRedditResolver = class SRedditResolver {
             }
         });
         const data = await (0, formatUsers_1.formatUsers)(allUsers);
-        const news_letter = await createNewsLetter(data);
+        const news_letter = await (0, createNewsLetter_1.createNewsLetter)(data);
+        try {
+        }
+        catch (error) {
+            console.log(error);
+            return false;
+        }
         return true;
     }
 };

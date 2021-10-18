@@ -7,32 +7,38 @@ import session from 'express-session';
 import connectRedis from 'connect-redis';
 import { COOKIE_NAME, __prod__ } from "./constants";
 import { HelloResolver } from "./resolvers/hello";
+import { PostResolver } from "./resolvers/posts";
+import { SRedditResolver } from "./resolvers/subReddit";
+import { UserResolver } from "./resolvers/users";
 import { MyContext } from "./types";
 import { createConnection } from "typeorm";
 import cors from "cors";
 import { Post } from "./entities/posts";
 import { User } from "./entities/users";
 import { Sreddit } from "./entities/subreddit";
+import { FavSubReddit} from "./entities/favSubreddit";
 import path from "path";
-require('dotenv').config()
-
+import dotenv from "dotenv";
 
 //i've not used reddit before, so I'm assuming the newsletter users get is solely based on list of posts from their
 //favourite subreddit for the previous day.
 const main = async () => {
+  dotenv.config({
+    path: '../.env'
+  });
   console.log(process.env.username)
   const conn= await createConnection({
     type: 'postgres',
-    database: 'liredit2',//new db
-    username: 'postgres',
-    password: 'emmanuel',
+    database: process.env.database,//new db
+    username: process.env.username,
+    password: process.env.password,
     logging: true,
     synchronize: true,
     migrations: [path.join(__dirname, "./migrations/*")],
-    entities: [Post, User, Sreddit]
+    entities: [Post, User, Sreddit, FavSubReddit]
   });
   await conn.runMigrations();
-  console.log('ran')
+  console.log('up and running')
 
   const app = express();
   const redisStore= connectRedis(session);
@@ -62,7 +68,7 @@ const main = async () => {
   );
   const apolloserver= new ApolloServer({
     schema : await buildSchema({
-      resolvers: [HelloResolver],
+      resolvers: [HelloResolver, PostResolver, SRedditResolver, UserResolver],
       validate: false
     }),
     context: ({ req, res}): MyContext=> ({ req, res, redis })

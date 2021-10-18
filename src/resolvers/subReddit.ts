@@ -15,7 +15,7 @@ import { isAuth } from "../middleware/isAuth";
 import { Sreddit } from "src/entities/subreddit";
 import { FavSubReddit } from "../entities/favSubreddit";
 import { formatUsers } from "../utils/formatUsers";
-import { createNesLetter } from "../utils/createNewsLetter"
+import { createNewsLetter } from "../utils/createNewsLetter"
 //create new subreddit here
 
 @InputType()
@@ -166,6 +166,13 @@ export class SRedditResolver{
     // ]
     const news_letter = await createNewsLetter(data)
     //schedule with sendgrid
+    try{
+      //sendgrid's api stuff
+      //having issues getting a send grid account
+    }catch(error){
+      console.log(error)
+      return false
+    }
     return true
   }
   
